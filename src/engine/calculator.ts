@@ -56,8 +56,8 @@ export function calculateItem(
   const opts = { ...DEFAULT_OPTIONS, ...options };
   const machineSteps: MachineStep[] = [];
 
-  function buildNode(id: string, qty: number, depth: number): CalcNode {
-    if (depth > opts.maxDepth) {
+  function buildNode(id: string, qty: number, depth: number, path: Set<string> = new Set()): CalcNode {
+    if (depth > opts.maxDepth || path.has(id)) {
       return { item: id, quantity: qty, recipe: null, children: [], isRaw: true, depth };
     }
 
@@ -69,16 +69,25 @@ export function calculateItem(
     }
 
     const recipe = recipes[0];
+
+    // Skip recipes that produce themselves (cycle via block↔ingot)
+    if (recipe.ingredients.some(ing => ing.item === id)) {
+      return { item: id, quantity: qty, recipe: null, children: [], isRaw: true, depth };
+    }
+
     const perCraft = recipe.results[0]?.count ?? 1;
     const times = Math.ceil(qty / perCraft);
     const actualOutput = times * perCraft;
 
     const children: CalcNode[] = [];
+    const newPath = new Set(path);
+    newPath.add(id);
+
     for (const ing of recipe.ingredients) {
       if (ing.catalyst) continue;
       const neededQty = ing.count * times;
       const itemKey = ing.item || ing.tag || '';
-      const child = buildNode(itemKey, neededQty, depth + 1);
+      const child = buildNode(itemKey, neededQty, depth + 1, newPath);
       children.push(child);
     }
 

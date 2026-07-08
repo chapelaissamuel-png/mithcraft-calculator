@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRecipeSearch } from './hooks/useRecipeSearch';
 import { useCalculator } from './hooks/useCalculator';
 import { SearchBar } from './components/Search/SearchBar';
-import { ItemGrid } from './components/Grid/ItemGrid';
+import { SectionedGrid } from './components/Grid/SectionedGrid';
 import { QuantitySelector } from './components/Common/QuantitySelector';
 import { ResourceSummary } from './components/Recipe/ResourceSummary';
 import { registry } from './data/recipe-registry';
@@ -104,11 +104,14 @@ export default function App() {
             <QuantitySelector value={quantity} onChange={handleQuantityChange} />
           </div>
 
-          <ItemGrid
-            items={results}
-            selectedItem={selectedItem}
-            onSelectItem={handleSelectItem}
-          />
+          <div className="flex-1 overflow-y-auto px-3 py-2">
+            <SectionedGrid
+              items={results}
+              mods={mods}
+              selectedId={selectedItem}
+              onSelect={handleSelectItem}
+            />
+          </div>
 
           <div className="px-3 py-1.5 border-t border-jei-border text-[10px] text-jei-text-dim flex-shrink-0">
             {results.length} résultats

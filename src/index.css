@@ -124,3 +124,13 @@ body {
 .machine-card:hover {
   border-color: #3A3A3A;
 }
+
+/* Mod section item grid */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 2px;
+}
+.items-grid-scrollable {
+  max-height: none;
+}
