@@ -57,6 +57,11 @@ class RecipeRegistry {
     return this.items.get(itemId)?.name || itemId.split(':').pop() || itemId;
   }
 
+  /** Get full item metadata */
+  getItemMeta(itemId: string): ItemMeta | undefined {
+    return this.items.get(itemId);
+  }
+
   /** Check if an item has recipes (is craftable vs raw) */
   isCraftable(itemId: string): boolean {
     return this.recipes.has(itemId) && (this.recipes.get(itemId)?.length ?? 0) > 0;
