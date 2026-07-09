@@ -104,7 +104,7 @@ const R: Recipe[] = [
     [ing('minecraft:apple'), ing('minecraft:golden_carrot'), ing('minecraft:hay_block')]),
   r('farmersdelight:cabbage_roll', 'crafting', 'farmersdelight', [res('farmersdelight:cabbage_roll')],
     [ing('farmersdelight:cabbage_leaf'), ing('farmersdelight:minced_beef'), ing('farmersdelight:cooked_rice')]),
-  r('farmersdelight:fried_rice', 'crafting', 'farmersdelight', [res('farmersdelight:fired_rice')],
+  r('farmersdelight:fried_rice', 'crafting', 'farmersdelight', [res('farmersdelight:fried_rice')],
     [ing('farmersdelight:cooked_rice'), ing('minecraft:egg'), ing('minecraft:carrot')]),
   r('farmersdelight:rice_roll', 'crafting', 'farmersdelight', [res('farmersdelight:rice_roll')],
     [ing('farmersdelight:cooked_rice'), ing('farmersdelight:salmon_slice')]),
