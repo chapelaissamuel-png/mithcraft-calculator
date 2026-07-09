@@ -30,6 +30,13 @@ const MOD_MACHINES: Record<string, { type: string; label: string }[]> = {
     { type: 'mekanism:infusing', label: '⚡ Infuseur métallurgique' },
     { type: 'mekanism:metallurgic_infusing', label: '⚡ Infusion avancée' },
     { type: 'mekanism:pigment_extracting', label: '⚡ Extraction' },
+    { type: 'mekanism:injecting', label: '⚡ Injection' },
+    { type: 'mekanism:washing', label: '⚡ Lavage' },
+    { type: 'mekanism:crystallizing', label: '⚡ Cristallisation' },
+    { type: 'mekanism:dissolving', label: '⚡ Dissolution' },
+    { type: 'mekanism:separating', label: '⚡ Séparation' },
+    { type: 'mekanism:reacting', label: '⚡ Réaction chimique' },
+    { type: 'mekanism:compressing', label: '⚡ Compression' },
     { type: 'crafting', label: '🍳 Crafting' },
     { type: 'smelting', label: '🔥 Cuisson' },
     { type: 'blasting', label: '🔥 Fonderie' },
@@ -50,12 +57,13 @@ const MOD_MACHINES: Record<string, { type: string; label: string }[]> = {
     { type: 'thermal:centrifuge', label: '🔥 Centrifuge' },
     { type: 'thermal:crystallizer', label: '🔥 Cristalliseur' },
     { type: 'thermal:press', label: '🔥 Presse' },
+    { type: 'thermal:sawmill', label: '🪵 Scierie' },
     { type: 'smelting', label: '🔥 Cuisson' },
     { type: 'blasting', label: '🔥 Fonderie' },
   ],
   ae2: [
     { type: 'crafting', label: '🍳 Crafting' },
-    { type: 'ae2:inscriber', label: '🔧 Inscripteur' },
+    { type: 'ae2:quartz_grindstone', label: '🪨 Meule' },
     { type: 'ae2:charger', label: '🔋 Chargeur' },
     { type: 'smelting', label: '🔥 Cuisson' },
   ],
@@ -66,6 +74,39 @@ const MOD_MACHINES: Record<string, { type: string; label: string }[]> = {
     { type: 'ic2:macerator', label: '🔄 Macérateur' },
     { type: 'ic2:recycler', label: '🔄 Recycleur' },
     { type: 'smelting', label: '🔥 Cuisson' },
+  ],
+  farmersdelight: [
+    { type: 'crafting', label: '🍳 Crafting' },
+    { type: 'smelting', label: '🔥 Cuisson' },
+  ],
+  mysticalagriculture: [
+    { type: 'crafting', label: '🍳 Crafting' },
+    { type: 'smelting', label: '🔥 Cuisson' },
+  ],
+  ironchest: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  prefab: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  pylon: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  storagenetwork: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  irons_spellbooks: [
+    { type: 'crafting', label: '🍳 Crafting' },
+    { type: 'brewing', label: '🧪 Alchimie' },
+  ],
+  rootsclassic: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  sophisticatedstorage: [
+    { type: 'crafting', label: '🍳 Crafting' },
+  ],
+  sophisticatedbackpacks: [
+    { type: 'crafting', label: '🍳 Crafting' },
   ],
 };
 
@@ -201,14 +242,23 @@ export function ModBrowser({ mods, items, selectedId, onSelect }: ModBrowserProp
                 );
               })}
 
-              {/* Empty mod message */}
+              {/* Items for mods without machine categories */}
               {isExpanded && !hasGroups && itemCount > 0 && (
-                <button
-                  onClick={() => toggleMachine(`${mod.id}:items`)}
-                  className="w-full flex items-center gap-1.5 pl-7 pr-2 py-1"
-                >
-                  <span className="text-[10px] text-jei-text-dim">Tous les items ({itemCount})</span>
-                </button>
+                <div className="py-0.5">
+                  <div className="text-[10px] text-jei-text-dim pl-7 pr-2 py-1">Tous les items ({itemCount})</div>
+                  {filteredItems.filter(i => i.mod === mod.id).map(item => (
+                    <button
+                      key={item.id}
+                      onClick={() => onSelect(item.id)}
+                      className={`w-full flex items-center gap-1.5 pl-10 pr-2 py-0.5 text-[11px] 
+                        hover:bg-jei-hover/50 transition-colors
+                        ${selectedId === item.id ? 'bg-jei-accent/10 text-jei-accent font-medium' : 'text-jei-text-dim'}`}
+                    >
+                      <ItemIcon itemId={item.id} size="sm" />
+                      <span className="truncate">{item.name}</span>
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
           );
