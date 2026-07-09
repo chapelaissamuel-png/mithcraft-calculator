@@ -56,6 +56,10 @@ const R: Recipe[] = [
   r('irons_spellbooks:poison_arrow', 'crafting', 'irons_spellbooks', [res('irons_spellbooks:poison_arrow', 8)],
     [ing('minecraft:arrow', 8), ing('minecraft:spider_eye')],
     { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:arrow'), B: ing('minecraft:spider_eye') } }),
+  r('irons_spellbooks:divine_pearl', 'crafting', 'irons_spellbooks', [res('irons_spellbooks:divine_pearl')],
+    [ing('irons_spellbooks:arcane_ingot'), ing('minecraft:ender_pearl', 8)]),
+  r('irons_spellbooks:blank_rune', 'crafting', 'irons_spellbooks', [res('irons_spellbooks:blank_rune')],
+    [], { pattern: ['SIS', 'I I', 'SIS'], key: { S: ing('minecraft:stone'), I: ing('irons_spellbooks:arcane_ingot') } }),
 ];
 
 export default R;
