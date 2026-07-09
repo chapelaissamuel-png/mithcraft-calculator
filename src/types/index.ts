@@ -36,6 +36,7 @@ export type RecipeCategory =
   | 'thermal:enchanter'
   | 'thermal:insolator'
   | 'thermal:pyrolyzer'
+  | 'thermal:sawmill'
   | 'create:mixing'
   | 'create:crushing'
   | 'create:pressing'
