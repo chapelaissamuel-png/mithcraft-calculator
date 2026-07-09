@@ -1,4 +1,4 @@
-import type { Ingredient, Recipe, RecipeCategory } from '../../types';
+import type { Ingredient, Recipe, RecipeCategory, Result } from '../../types';
 
 /** Build a simple ingredient reference */
 export const ing = (item: string, count = 1): Ingredient => ({ item, count });
@@ -28,6 +28,8 @@ function extractIngredients(
 }
 
 /** Recipe builder factory */
+export const res = (item: string, count = 1): Result => ({ item, count });
+
 export function r(
   id: string,
   type: RecipeCategory,

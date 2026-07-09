@@ -1,0 +1,47 @@
+// Prefab recipes
+import { r, res, ing } from './helpers';
+import type { Recipe } from '../../types';
+
+const R: Recipe[] = [
+  r('prefab:item_starter_house', 'crafting', 'prefab', [res('prefab:item_starter_house')],
+    [ing('minecraft:oak_log', 8), ing('minecraft:cobblestone', 8), ing('minecraft:glass', 4)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:oak_log'), B: ing('minecraft:cobblestone') } }),
+  r('prefab:item_barn', 'crafting', 'prefab', [res('prefab:item_barn')],
+    [ing('minecraft:oak_planks', 16), ing('minecraft:hay_block', 8), ing('minecraft:fence', 8)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:oak_planks'), B: ing('minecraft:hay_block'), C: ing('minecraft:fence') } }),
+  r('prefab:item_warehouse', 'crafting', 'prefab', [res('prefab:item_warehouse')],
+    [ing('minecraft:stone', 16), ing('minecraft:oak_log', 8), ing('minecraft:iron_ingot', 4)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:stone'), B: ing('minecraft:oak_log'), C: ing('minecraft:iron_ingot') } }),
+  r('prefab:item_mineshaft_entrance', 'crafting', 'prefab', [res('prefab:item_mineshaft_entrance')],
+    [ing('minecraft:oak_fence', 8), ing('minecraft:cobblestone', 8), ing('minecraft:torch', 8)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:oak_fence'), B: ing('minecraft:cobblestone'), C: ing('minecraft:torch') } }),
+  r('prefab:item_ranch', 'crafting', 'prefab', [res('prefab:item_ranch')],
+    [ing('minecraft:spruce_planks', 16), ing('minecraft:oak_fence', 8), ing('minecraft:oak_log', 4)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:spruce_planks'), B: ing('minecraft:oak_fence'), C: ing('minecraft:oak_log') } }),
+  r('prefab:item_town_hall', 'crafting', 'prefab', [res('prefab:item_town_hall')],
+    [ing('minecraft:stone_bricks', 16), ing('minecraft:oak_planks', 8), ing('minecraft:glass', 4)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:stone_bricks'), B: ing('minecraft:oak_planks'), C: ing('minecraft:glass') } }),
+  r('prefab:item_defensive_wall', 'crafting', 'prefab', [res('prefab:item_defensive_wall')],
+    [ing('minecraft:cobblestone', 16), ing('minecraft:stone', 8), ing('minecraft:iron_bars', 4)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:cobblestone'), B: ing('minecraft:stone'), C: ing('minecraft:iron_bars') } }),
+  r('prefab:item_saloon', 'crafting', 'prefab', [res('prefab:item_saloon')],
+    [ing('minecraft:oak_planks', 16), ing('minecraft:oak_log', 8), ing('minecraft:oak_fence', 4)],
+    { pattern: ['AAA', 'BAB', 'CCC'], key: { A: ing('minecraft:oak_planks'), B: ing('minecraft:oak_log'), C: ing('minecraft:oak_fence') } }),
+  r('prefab:item_chapel', 'crafting', 'prefab', [res('prefab:item_chapel')],
+    [ing('minecraft:stone_bricks', 16), ing('minecraft:oak_log', 8), ing('minecraft:glass', 8)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:stone_bricks'), B: ing('minecraft:oak_log'), C: ing('minecraft:glass') } }),
+  r('prefab:item_watch_tower', 'crafting', 'prefab', [res('prefab:item_watch_tower')],
+    [ing('minecraft:stone', 16), ing('minecraft:oak_planks', 8), ing('minecraft:ladder', 8)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:stone'), B: ing('minecraft:oak_planks'), C: ing('minecraft:ladder') } }),
+  r('prefab:item_magic_temple', 'crafting', 'prefab', [res('prefab:item_magic_temple')],
+    [ing('minecraft:obsidian', 16), ing('minecraft:diamond', 4), ing('minecraft:gold_ingot', 4)],
+    { pattern: ['AAA', 'BAB', 'CAC'], key: { A: ing('minecraft:obsidian'), B: ing('minecraft:diamond'), C: ing('minecraft:gold_ingot') } }),
+  r('prefab:item_nether_tower', 'crafting', 'prefab', [res('prefab:item_nether_tower')],
+    [ing('minecraft:nether_bricks', 16), ing('minecraft:obsidian', 8), ing('minecraft:soul_sand', 4)],
+    { pattern: ['AAA', 'ABA', 'ACA'], key: { A: ing('minecraft:nether_bricks'), B: ing('minecraft:obsidian'), C: ing('minecraft:soul_sand') } }),
+  r('prefab:item_aqua_base', 'crafting', 'prefab', [res('prefab:item_aqua_base')],
+    [ing('minecraft:prismarine', 16), ing('minecraft:sea_lantern', 4), ing('minecraft:glass', 8)],
+    { pattern: ['AAA', 'BAB', 'CAC'], key: { A: ing('minecraft:prismarine'), B: ing('minecraft:sea_lantern'), C: ing('minecraft:glass') } }),
+];
+
+export default R;

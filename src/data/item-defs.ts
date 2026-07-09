@@ -308,7 +308,16 @@ export const MODS: ModInfo[] = [
   { id: 'create', name: 'Create', color: '#D4AF37', itemCount: 0, short: 'cr' },
   { id: 'ae2', name: 'Applied Energistics 2', color: '#4FC3F7', itemCount: 0, short: 'ae2' },
   { id: 'ic2', name: 'IndustrialCraft 2', color: '#66BB6A', itemCount: 0, short: 'ic2' },
-  { id: 'immersiveengineering', name: 'Immersive Engineering', color: '#8D6E63', itemCount: 0, short: 'ie' },
+  { id: 'ironchest', name: 'Iron Chests', color: '#C0C0C0', itemCount: 0, short: 'ic' },
+  { id: 'pylon', name: 'Pylon', color: '#00BFFF', itemCount: 0, short: 'py' },
+  { id: 'prefab', name: 'Prefab', color: '#D4A574', itemCount: 0, short: 'pf' },
+  { id: 'storagenetwork', name: 'Simple Storage Network', color: '#4A90D9', itemCount: 0, short: 'sn' },
+  { id: 'sophisticatedstorage', name: 'Sophisticated Storage', color: '#A0522D', itemCount: 0, short: 'sst' },
+  { id: 'sophisticatedbackpacks', name: 'Sophisticated Backpacks', color: '#8B4513', itemCount: 0, short: 'sbp' },
+  { id: 'rootsclassic', name: 'Roots Classic', color: '#2D8B4E', itemCount: 0, short: 'rt' },
+  { id: 'irons_spellbooks', name: "Iron's Spells 'n Spellbooks", color: '#DC143C', itemCount: 0, short: 'isb' },
+  { id: 'farmersdelight', name: "Farmer's Delight", color: '#5B8C2A', itemCount: 0, short: 'fd' },
+  { id: 'mysticalagriculture', name: 'Mystical Agriculture', color: '#7B2DB5', itemCount: 0, short: 'ma' },
 ];
 
 export function buildItemRegistry(): Map<string, ItemMeta> {

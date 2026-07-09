@@ -1,0 +1,113 @@
+// Mystical Agriculture recipes
+import { r, res, ing } from './helpers';
+import type { Recipe } from '../../types';
+
+const R: Recipe[] = [
+  // ── Core Materials ──────────────────────────────────────
+  r('mysticalagriculture:prosperity_shard', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prosperity_shard')],
+    [ing('minecraft:diamond'), ing('mysticalagriculture:inferium_essence')]),
+  r('mysticalagriculture:prosperity_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prosperity_ingot')],
+    [ing('mysticalagriculture:prosperity_shard', 4)]),
+  r('mysticalagriculture:prosperity_gem', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prosperity_gem')],
+    [ing('mysticalagriculture:prosperity_shard', 4)],
+    { pattern: ['AA', 'AA'], key: { A: ing('mysticalagriculture:prosperity_shard') } }),
+  r('mysticalagriculture:prosperity_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prosperity_block')],
+    [ing('mysticalagriculture:prosperity_shard', 9)]),
+
+  // ── Essence → Ingot / Block ─────────────────────────────
+  r('mysticalagriculture:inferium_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:inferium_ingot')],
+    [ing('mysticalagriculture:inferium_essence', 4)]),
+  r('mysticalagriculture:prudentium_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prudentium_ingot')],
+    [ing('mysticalagriculture:prudentium_essence', 4)]),
+  r('mysticalagriculture:tertium_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:tertium_ingot')],
+    [ing('mysticalagriculture:tertium_essence', 4)]),
+  r('mysticalagriculture:imperium_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:imperium_ingot')],
+    [ing('mysticalagriculture:imperium_essence', 4)]),
+  r('mysticalagriculture:supremium_ingot', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:supremium_ingot')],
+    [ing('mysticalagriculture:supremium_essence', 4)]),
+  r('mysticalagriculture:inferium_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:inferium_block')],
+    [ing('mysticalagriculture:inferium_essence', 9)]),
+  r('mysticalagriculture:prudentium_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prudentium_block')],
+    [ing('mysticalagriculture:prudentium_essence', 9)]),
+  r('mysticalagriculture:tertium_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:tertium_block')],
+    [ing('mysticalagriculture:tertium_essence', 9)]),
+  r('mysticalagriculture:imperium_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:imperium_block')],
+    [ing('mysticalagriculture:imperium_essence', 9)]),
+  r('mysticalagriculture:supremium_block', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:supremium_block')],
+    [ing('mysticalagriculture:supremium_essence', 9)]),
+
+  // ── Essence upgrade progression ─────────────────────────
+  r('mysticalagriculture:prudentium_essence', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prudentium_essence')],
+    [ing('mysticalagriculture:inferium_essence', 4)]),
+  r('mysticalagriculture:tertium_essence', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:tertium_essence')],
+    [ing('mysticalagriculture:prudentium_essence', 4)]),
+  r('mysticalagriculture:imperium_essence', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:imperium_essence')],
+    [ing('mysticalagriculture:tertium_essence', 4)]),
+  r('mysticalagriculture:supremium_essence', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:supremium_essence')],
+    [ing('mysticalagriculture:imperium_essence', 4)]),
+
+  // ── Seeds ───────────────────────────────────────────────
+  r('mysticalagriculture:inferium_seeds', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:inferium_seeds')],
+    [ing('minecraft:wheat_seeds'), ing('mysticalagriculture:inferium_essence')]),
+  r('mysticalagriculture:prudentium_seeds', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prudentium_seeds')],
+    [ing('mysticalagriculture:inferium_seeds'), ing('mysticalagriculture:prudentium_essence', 2)]),
+  r('mysticalagriculture:tertium_seeds', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:tertium_seeds')],
+    [ing('mysticalagriculture:prudentium_seeds'), ing('mysticalagriculture:tertium_essence', 2)]),
+  r('mysticalagriculture:imperium_seeds', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:imperium_seeds')],
+    [ing('mysticalagriculture:tertium_seeds'), ing('mysticalagriculture:imperium_essence', 2)]),
+  r('mysticalagriculture:supremium_seeds', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:supremium_seeds')],
+    [ing('mysticalagriculture:imperium_seeds'), ing('mysticalagriculture:supremium_essence', 2)]),
+
+  // ── Resource Crops ──────────────────────────────────────
+  r('mysticalagriculture:crop_iron', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_iron')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:iron_ingot'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_gold', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_gold')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:gold_ingot'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_coal', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_coal')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:coal'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_redstone', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_redstone')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:redstone'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_lapis', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_lapis')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:lapis_lazuli'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_copper', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_copper')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:copper_ingot'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_diamond', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_diamond')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:diamond'), ing('mysticalagriculture:prudentium_seeds')]),
+  r('mysticalagriculture:crop_emerald', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_emerald')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:emerald'), ing('mysticalagriculture:prudentium_seeds')]),
+  r('mysticalagriculture:crop_quartz', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_quartz')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:quartz'), ing('mysticalagriculture:inferium_seeds')]),
+  r('mysticalagriculture:crop_netherite', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:crop_netherite')],
+    [ing('mysticalagriculture:prosperity_shard'), ing('minecraft:netherite_ingot'), ing('mysticalagriculture:imperium_seeds')]),
+
+  // ── Machines ─────────────────────────────────────────────
+  r('mysticalagriculture:infusion_altar', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:infusion_altar')],
+    [ing('minecraft:stone', 8), ing('mysticalagriculture:prosperity_shard')],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:stone'), B: ing('mysticalagriculture:prosperity_shard') } }),
+  r('mysticalagriculture:infusion_crystal', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:infusion_crystal')],
+    [ing('mysticalagriculture:inferium_essence', 4), ing('minecraft:diamond', 4), ing('mysticalagriculture:prosperity_shard')],
+    { pattern: ['ABA', 'BCB', 'ABA'], key: { A: ing('mysticalagriculture:inferium_essence'), B: ing('minecraft:diamond'), C: ing('mysticalagriculture:prosperity_shard') } }),
+  r('mysticalagriculture:master_infusion_crystal', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:master_infusion_crystal')],
+    [ing('mysticalagriculture:supremium_essence', 4), ing('minecraft:netherite_ingot', 4), ing('mysticalagriculture:infusion_crystal')],
+    { pattern: ['ABA', 'BCB', 'ABA'], key: { A: ing('mysticalagriculture:supremium_essence'), B: ing('minecraft:netherite_ingot'), C: ing('mysticalagriculture:infusion_crystal') } }),
+  r('mysticalagriculture:seed_reprocessor', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:seed_reprocessor')],
+    [ing('mysticalagriculture:prosperity_ingot', 4), ing('minecraft:redstone', 2), ing('minecraft:chest'), ing('mysticalagriculture:infusion_crystal')],
+    { pattern: ['ABA', 'BCD', 'ABA'], key: { A: ing('mysticalagriculture:prosperity_ingot'), B: ing('minecraft:redstone'), C: ing('minecraft:chest'), D: ing('mysticalagriculture:infusion_crystal') } }),
+  r('mysticalagriculture:essence_vessel', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:essence_vessel')],
+    [ing('mysticalagriculture:prosperity_ingot', 4), ing('minecraft:glass', 4), ing('mysticalagriculture:infusion_crystal')],
+    { pattern: ['ABA', 'BCB', 'ABA'], key: { A: ing('mysticalagriculture:prosperity_ingot'), B: ing('minecraft:glass'), C: ing('mysticalagriculture:infusion_crystal') } }),
+
+  // ── Farmlands ────────────────────────────────────────────
+  r('mysticalagriculture:inferium_farmland', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:inferium_farmland')],
+    [ing('minecraft:farmland'), ing('mysticalagriculture:inferium_essence')]),
+  r('mysticalagriculture:prudentium_farmland', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:prudentium_farmland')],
+    [ing('mysticalagriculture:inferium_farmland'), ing('mysticalagriculture:prudentium_essence')]),
+  r('mysticalagriculture:tertium_farmland', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:tertium_farmland')],
+    [ing('mysticalagriculture:prudentium_farmland'), ing('mysticalagriculture:tertium_essence')]),
+  r('mysticalagriculture:imperium_farmland', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:imperium_farmland')],
+    [ing('mysticalagriculture:tertium_farmland'), ing('mysticalagriculture:imperium_essence')]),
+  r('mysticalagriculture:supremium_farmland', 'crafting', 'mysticalagriculture', [res('mysticalagriculture:supremium_farmland')],
+    [ing('mysticalagriculture:imperium_farmland'), ing('mysticalagriculture:supremium_essence')]),
+];
+
+export default R;

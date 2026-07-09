@@ -1,0 +1,47 @@
+// Sophisticated Storage recipes
+import { r, res, ing } from './helpers';
+import type { Recipe } from '../../types';
+
+const R: Recipe[] = [
+  r('sophisticatedstorage:chest', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:chest')],
+    [ing('minecraft:chest'), ing('minecraft:iron_ingot', 2), ing('minecraft:redstone')],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:iron_ingot'), B: ing('minecraft:chest') } }),
+  r('sophisticatedstorage:barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:barrel')],
+    [ing('minecraft:barrel'), ing('minecraft:iron_ingot', 2), ing('minecraft:redstone')],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:iron_ingot'), B: ing('minecraft:barrel') } }),
+  r('sophisticatedstorage:limited_barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:limited_barrel')],
+    [ing('minecraft:barrel', 2), ing('minecraft:iron_ingot', 4), ing('minecraft:redstone')],
+    { pattern: ['ABA', 'BCB', 'ABA'], key: { A: ing('minecraft:iron_ingot'), B: ing('minecraft:barrel'), C: ing('minecraft:redstone') } }),
+  r('sophisticatedstorage:iron_chest', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:iron_chest')],
+    [ing('sophisticatedstorage:chest'), ing('minecraft:iron_ingot', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:iron_ingot'), B: ing('sophisticatedstorage:chest') } }),
+  r('sophisticatedstorage:gold_chest', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:gold_chest')],
+    [ing('sophisticatedstorage:iron_chest'), ing('minecraft:gold_ingot', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:gold_ingot'), B: ing('sophisticatedstorage:iron_chest') } }),
+  r('sophisticatedstorage:diamond_chest', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:diamond_chest')],
+    [ing('sophisticatedstorage:gold_chest'), ing('minecraft:diamond', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:diamond'), B: ing('sophisticatedstorage:gold_chest') } }),
+  r('sophisticatedstorage:netherite_chest', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:netherite_chest')],
+    [ing('sophisticatedstorage:diamond_chest'), ing('minecraft:netherite_ingot')],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:netherite_ingot'), B: ing('sophisticatedstorage:diamond_chest') } }),
+  r('sophisticatedstorage:iron_barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:iron_barrel')],
+    [ing('sophisticatedstorage:barrel'), ing('minecraft:iron_ingot', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:iron_ingot'), B: ing('sophisticatedstorage:barrel') } }),
+  r('sophisticatedstorage:gold_barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:gold_barrel')],
+    [ing('sophisticatedstorage:iron_barrel'), ing('minecraft:gold_ingot', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:gold_ingot'), B: ing('sophisticatedstorage:iron_barrel') } }),
+  r('sophisticatedstorage:diamond_barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:diamond_barrel')],
+    [ing('sophisticatedstorage:gold_barrel'), ing('minecraft:diamond', 7)],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:diamond'), B: ing('sophisticatedstorage:gold_barrel') } }),
+  r('sophisticatedstorage:netherite_barrel', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:netherite_barrel')],
+    [ing('sophisticatedstorage:diamond_barrel'), ing('minecraft:netherite_ingot')],
+    { pattern: ['AAA', 'ABA', 'AAA'], key: { A: ing('minecraft:netherite_ingot'), B: ing('sophisticatedstorage:diamond_barrel') } }),
+  r('sophisticatedstorage:controller', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:controller')],
+    [ing('sophisticatedstorage:diamond_chest'), ing('minecraft:redstone', 4), ing('minecraft:ender_pearl', 4)],
+    { pattern: ['ABA', 'BCB', 'ABA'], key: { A: ing('minecraft:redstone'), B: ing('minecraft:ender_pearl'), C: ing('sophisticatedstorage:diamond_chest') } }),
+  r('sophisticatedstorage:storage_link', 'crafting', 'sophisticatedstorage', [res('sophisticatedstorage:storage_link')],
+    [ing('minecraft:ender_pearl', 4), ing('minecraft:redstone', 4), ing('sophisticatedstorage:chest')],
+    { pattern: ['ABA', 'ACA', 'ABA'], key: { A: ing('minecraft:ender_pearl'), B: ing('minecraft:redstone'), C: ing('sophisticatedstorage:chest') } }),
+];
+
+export default R;
