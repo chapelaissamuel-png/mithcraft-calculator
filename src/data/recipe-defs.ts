@@ -9,13 +9,17 @@ import CR from './recipes/create';
 import TH from './recipes/thermal';
 import AE from './recipes/ae2';
 import IC from './recipes/ic2';
+import MEK_PROC from './recipes/mekanism-processing';
+import TH_PROC from './recipes/thermal-processing';
 
 export function getAllRecipes(): Recipe[] {
   return [
     ...V,     // Vanilla Minecraft
     ...MEK,   // Mekanism
+    ...MEK_PROC, // Mekanism processing
     ...CR,    // Create
     ...TH,    // Thermal Series
+    ...TH_PROC, // Thermal processing
     ...AE,    // Applied Energistics 2
     ...IC,    // IndustrialCraft 2
   ];

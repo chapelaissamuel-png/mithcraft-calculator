@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useRecipeSearch } from './hooks/useRecipeSearch';
 import { useCalculator } from './hooks/useCalculator';
 import { SearchBar } from './components/Search/SearchBar';
 import { SectionedGrid } from './components/Grid/SectionedGrid';
-import { QuantitySelector } from './components/Common/QuantitySelector';
 import { ResourceSummary } from './components/Recipe/ResourceSummary';
+import { ModBrowser } from './components/Browser/ModBrowser';
 import { registry } from './data/recipe-registry';
 
 export default function App() {
@@ -13,6 +13,7 @@ export default function App() {
 
   const [searchInput, setSearchInput] = useState('');
   const [showModList, setShowModList] = useState(false);
+  const [viewMode, setViewMode] = useState<'browser' | 'search'>('browser');
 
   const handleSearchChange = (val: string) => {
     setSearchInput(val);
@@ -30,6 +31,8 @@ export default function App() {
       calculate(selectedItem, val);
     }
   };
+
+  const allItems = useMemo(() => registry.getAllItems(), []);
 
   const handleModClick = (modId: string) => {
     const newQuery = `@${modId} `;
@@ -89,33 +92,62 @@ export default function App() {
 
       {/* === MAIN LAYOUT === */}
       <div className="flex flex-1 overflow-hidden">
-        {/* === LEFT PANEL: Search + Grid === */}
-        <div className="flex flex-col w-[340px] min-w-[260px] border-r border-jei-border flex-shrink-0">
-          <div className="px-3 py-2 border-b border-jei-border">
-            <SearchBar
-              value={searchInput}
-              onChange={handleSearchChange}
-              totalItems={totalItems}
-              totalRecipes={totalRecipes}
-            />
+        {/* === LEFT PANEL: Mod Browser or Search === */}
+        <div className="flex flex-col w-[300px] min-w-[240px] border-r border-jei-border flex-shrink-0">
+          {/* Tabs */}
+          <div className="flex border-b border-jei-border">
+            <button
+              onClick={() => setViewMode('browser')}
+              className={`flex-1 text-xs py-2 font-medium transition-colors ${
+                viewMode === 'browser'
+                  ? 'text-jei-accent border-b-2 border-jei-accent'
+                  : 'text-jei-text-dim hover:text-jei-text'
+              }`}
+            >
+              📂 Parcourir
+            </button>
+            <button
+              onClick={() => setViewMode('search')}
+              className={`flex-1 text-xs py-2 font-medium transition-colors ${
+                viewMode === 'search'
+                  ? 'text-jei-accent border-b-2 border-jei-accent'
+                  : 'text-jei-text-dim hover:text-jei-text'
+              }`}
+            >
+              🔍 Recherche
+            </button>
           </div>
 
-          <div className="px-3 py-2 border-b border-jei-border">
-            <QuantitySelector value={quantity} onChange={handleQuantityChange} />
-          </div>
-
-          <div className="flex-1 overflow-y-auto px-3 py-2">
-            <SectionedGrid
-              items={results}
+          {viewMode === 'search' ? (
+            <>
+              <div className="px-3 py-2 border-b border-jei-border">
+                <SearchBar
+                  value={searchInput}
+                  onChange={handleSearchChange}
+                  totalItems={totalItems}
+                  totalRecipes={totalRecipes}
+                />
+              </div>
+              <div className="flex-1 overflow-y-auto px-3 py-2">
+                <SectionedGrid
+                  items={results}
+                  mods={mods}
+                  selectedId={selectedItem}
+                  onSelect={handleSelectItem}
+                />
+              </div>
+              <div className="px-3 py-1.5 border-t border-jei-border text-[10px] text-jei-text-dim flex-shrink-0">
+                {results.length} résultats
+              </div>
+            </>
+          ) : (
+            <ModBrowser
               mods={mods}
+              items={allItems}
               selectedId={selectedItem}
               onSelect={handleSelectItem}
             />
-          </div>
-
-          <div className="px-3 py-1.5 border-t border-jei-border text-[10px] text-jei-text-dim flex-shrink-0">
-            {results.length} résultats
-          </div>
+          )}
         </div>
 
         {/* === RIGHT PANEL: Recipe Details === */}
@@ -126,6 +158,37 @@ export default function App() {
             </div>
           ) : calcResult ? (
             <div className="p-4">
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-jei-border">
+                <div className="flex items-center gap-2">
+                  <label className="text-xs text-jei-text-dim">Quantité:</label>
+                  <input
+                    type="number"
+                    min={1}
+                    max={99999}
+                    value={quantity}
+                    onChange={e => {
+                      const v = Math.max(1, parseInt(e.target.value) || 1);
+                      handleQuantityChange(v);
+                    }}
+                    className="w-20 bg-jei-surface text-sm text-jei-text font-mono px-2 py-1 rounded border border-jei-border/50 text-center"
+                  />
+                </div>
+                <button
+                  onClick={() => handleQuantityChange(quantity + 64)}
+                  className="text-[10px] px-2 py-1 bg-jei-panel border border-jei-border rounded hover:bg-jei-hover text-jei-text-dim"
+                >
+                  +64
+                </button>
+                <button
+                  onClick={() => handleQuantityChange(Math.max(1, quantity - 64))}
+                  className="text-[10px] px-2 py-1 bg-jei-panel border border-jei-border rounded hover:bg-jei-hover text-jei-text-dim"
+                >
+                  -64
+                </button>
+                <span className="text-[10px] text-jei-text-dim ml-auto">
+                  {calcResult.totalOperations} opérations
+                </span>
+              </div>
               <ResourceSummary calcResult={calcResult} />
             </div>
           ) : selectedItem ? (
