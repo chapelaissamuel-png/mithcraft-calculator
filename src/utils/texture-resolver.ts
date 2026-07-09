@@ -604,7 +604,14 @@ const TEXTURE_MAP: Record<string, string> = {
 };
 
 export function getItemTexture(itemId: string): string | undefined {
-  const path = TEXTURE_MAP[itemId];
-  if (!path) return undefined;
-  return `${import.meta.env.BASE_URL}textures/${path}`;
+  // First check the static map for overrides/non-standard names
+  const mapped = TEXTURE_MAP[itemId];
+  if (mapped) return `${import.meta.env.BASE_URL}textures/${mapped}`;
+
+  // Fall back to conventional path: mod/item_name.png
+  // This auto-resolves items whose texture files follow the standard naming convention,
+  // so every item in the browser at least _tries_ to load an image.
+  const [mod, ...rest] = itemId.split(':');
+  const itemName = rest.join(':');
+  return `${import.meta.env.BASE_URL}textures/${mod}/${itemName}.png`;
 }
