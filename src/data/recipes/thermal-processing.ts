@@ -32,5 +32,18 @@ const TH_PROC: Recipe[] = [
   r('thermal:constantan_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:constantan_ingot' }], [ing('minecraft:copper_ingot'), ing('thermal:nickel_ingot')], { energy:400 }),
   r('thermal:electrum_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:electrum_ingot' }], [ing('minecraft:gold_ingot'), ing('thermal:silver_ingot')], { energy:400 }),
   r('thermal:invar_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:invar_ingot' }], [ing('minecraft:iron_ingot', 2), ing('thermal:nickel_ingot')], { energy:400 }),
+  r('thermal:signalum_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:signalum_ingot' }], [ing('minecraft:copper_ingot', 3), ing('minecraft:redstone', 4)], { energy:800 }),
+  r('thermal:lumium_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:lumium_ingot' }], [ing('thermal:tin_ingot', 3), ing('minecraft:glowstone_dust', 2)], { energy:800 }),
+  r('thermal:enderium_ingot_alloy', 'thermal:induction_smelter', 'thermal', [{ item: 'thermal:enderium_ingot' }], [ing('thermal:lead_ingot', 2), ing('minecraft:diamond'), ing('minecraft:ender_pearl')], { energy:1200 }),
+// ─── SAWMILL ─────────────────────────────────────────────────────
+  r('thermal:oak_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:oak_planks', count: 6 }], [ing('minecraft:oak_log')]),
+  r('thermal:spruce_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:spruce_planks', count: 6 }], [ing('minecraft:spruce_log')]),
+  r('thermal:birch_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:birch_planks', count: 6 }], [ing('minecraft:birch_log')]),
+  r('thermal:jungle_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:jungle_planks', count: 6 }], [ing('minecraft:jungle_log')]),
+  r('thermal:acacia_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:acacia_planks', count: 6 }], [ing('minecraft:acacia_log')]),
+  r('thermal:dark_oak_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:dark_oak_planks', count: 6 }], [ing('minecraft:dark_oak_log')]),
+  r('thermal:mangrove_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:mangrove_planks', count: 6 }], [ing('minecraft:mangrove_log')]),
+  r('thermal:crimson_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:crimson_planks', count: 6 }], [ing('minecraft:crimson_stem')]),
+  r('thermal:warped_planks_saw', 'thermal:sawmill', 'thermal', [{ item: 'minecraft:warped_planks', count: 6 }], [ing('minecraft:warped_stem')]),
 ];
 export default TH_PROC;
